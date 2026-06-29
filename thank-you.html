@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your download | Aphelion Press</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0A0C12;--star:#EDEEF2;--grey:#8A8F9C;--grid:#1A1D26;--accent:#7DD3E0;--card:#10131C;--line:#1E2230}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{min-height:100vh;background:var(--bg);color:var(--star);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;
+    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:64px 64px;background-position:center;
+    display:flex;align-items:center;justify-content:center;padding:32px}
+  h1,h2{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-.01em}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  a{color:inherit}
+  .card{max-width:560px;width:100%;text-align:center;background:rgba(16,19,28,.7);border:1px solid var(--line);border-radius:12px;padding:48px 40px;backdrop-filter:blur(4px)}
+  .check{width:64px;height:64px;border:1px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 26px}
+  .check svg{width:30px;height:30px}
+  .coord{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);opacity:.85;display:block;margin-bottom:16px}
+  h1{font-size:30px;line-height:1.15;margin-bottom:14px}
+  .sub{color:var(--grey);font-size:15.5px;margin-bottom:32px;max-width:42ch;margin-left:auto;margin-right:auto}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:.02em;
+    padding:15px 28px;border-radius:5px;background:var(--accent);color:#06222a;font-weight:500;text-decoration:none;border:1px solid var(--accent);transition:background .15s ease}
+  .btn:hover{background:#9ee0eb}
+  .meta{margin-top:18px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--grey)}
+  .divider{height:1px;background:var(--line);margin:32px 0}
+  .help{font-size:13.5px;color:var(--grey)}
+  .help a{color:var(--accent)}
+  .foot{margin-top:30px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5a5f6c}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="check">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7DD3E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+    </div>
+    <span class="coord">RA 14h 29m &middot; payment confirmed</span>
+    <h1>Thank you — your book is ready</h1>
+    <p class="sub">The Universe Explained is yours. Click below to download your copy. The link also works from your email receipt, so you can grab it again any time.</p>
+
+    <!-- ============================================================
+         REPLACE the href below with the real URL of your PDF file
+         once you've uploaded it (see hosting steps).
+         The "download" attribute prompts a file download.
+         ============================================================ -->
+    <a class="btn" href="REPLACE_WITH_YOUR_PDF_URL" download="The_Universe_Explained.pdf">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download the PDF
+    </a>
+    <div class="meta">PDF &middot; 112 pages &middot; read on any device</div>
+
+    <div class="divider"></div>
+
+    <p class="help">Trouble downloading? Email <a href="mailto:YOUR_EMAIL_HERE">your support address</a> and we'll send it straight to you.</p>
+
+    <div class="foot">&copy; 2026 Aphelion Press</div>
+  </div>
+</body>
+</html>

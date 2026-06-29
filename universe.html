@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Universe Explained | The Universe Of Astronomy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050814;
+    --star: #E2E8F0;
+    --grey: #94A3B8;
+    --accent: #38BDF8;
+    --accent-glow: rgba(56, 189, 248, 0.5);
+    --card-bg: rgba(15, 23, 42, 0.7);
+    --card-border: #1E293B;
+    --highlight-border: #FBBF24;
+    --highlight-glow: rgba(251, 191, 36, 0.3);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--star);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6; overflow-x: hidden;
+  }
+  
+  /* Space Background */
+  .space-bg { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: -1; background: radial-gradient(circle at center, #0B1120 0%, #03040B 100%); }
+  .stars { width: 1px; height: 1px; background: transparent; box-shadow: 174px 233px #FFF, 542px 145px #FFF, 842px 345px #FFF, 241px 765px #FFF, 942px 143px #FFF; animation: animStar 50s linear infinite; }
+  .stars:after { content: " "; position: absolute; top: 2000px; width: 1px; height: 1px; background: transparent; box-shadow: 174px 233px #FFF, 542px 145px #FFF, 842px 345px #FFF, 241px 765px #FFF, 942px 143px #FFF; }
+  @keyframes animStar { from { transform: translateY(0px); } to { transform: translateY(-2000px); } }
+
+  h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.01em; }
+  a { color: inherit; text-decoration: none; }
+  
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+  
+  /* Header */
+  header { position: sticky; top: 0; z-index: 50; background: rgba(5, 8, 20, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .nav-left { display: flex; gap: 24px; font-size: 13px; font-weight: 500; text-transform: uppercase; color: var(--accent); }
+  .brand { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: var(--highlight-border); display: flex; align-items: center; gap: 8px; }
+  .brand svg { width: 24px; height: 24px; fill: var(--highlight-border); }
+  
+  /* Sticky Header on scroll */
+  .sticky-bar { position: fixed; top: 72px; left: 0; right: 0; background: rgba(15,23,42,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--accent); padding: 12px 24px; display: none; justify-content: center; gap: 24px; align-items: center; z-index: 40; }
+  .sticky-bar.visible { display: flex; animation: slideDown 0.3s ease forwards; }
+  @keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+  
+  /* Buttons */
+  .btn-primary { background: var(--accent); color: #000; padding: 16px 32px; border-radius: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: inline-block; box-shadow: 0 0 20px var(--accent-glow); transition: all 0.2s; border: none; cursor: pointer; }
+  .btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 30px var(--accent-glow); background: #7DD3FC; }
+  .btn-gold { background: var(--highlight-border); box-shadow: 0 0 20px var(--highlight-glow); }
+  .btn-gold:hover { background: #FDE047; box-shadow: 0 0 30px var(--highlight-glow); }
+
+  /* Hero */
+  .hero { padding: 80px 0; display: flex; gap: 40px; align-items: center; }
+  .hero-content { flex: 1; }
+  .hero-badge { display: inline-block; background: rgba(56,189,248,0.1); color: var(--accent); border: 1px solid var(--accent); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 24px; }
+  .hero h1 { font-size: clamp(36px, 5vw, 54px); margin-bottom: 20px; text-transform: uppercase; line-height: 1.1; }
+  .hero h1 span { color: var(--accent); }
+  .hero-sub { color: var(--grey); font-size: 18px; margin-bottom: 32px; max-width: 600px; }
+  .social-proof { display: flex; align-items: center; gap: 8px; font-size: 14px; margin-bottom: 24px; }
+  .live-dot { width: 10px; height: 10px; background: #ef4444; border-radius: 50%; box-shadow: 0 0 10px #ef4444; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
+  
+  .offer-box { background: rgba(15,23,42,0.6); border: 1px solid var(--card-border); border-radius: 12px; padding: 32px; text-align: center; }
+  .countdown { display: flex; justify-content: center; gap: 16px; margin: 16px 0; font-family: 'Space Grotesk', sans-serif; font-size: 24px; color: var(--accent); font-weight: 700; }
+  .price-strike { color: #ef4444; text-decoration: line-through; font-size: 18px; }
+  .price-main { font-size: 48px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; margin: 10px 0 20px; }
+  
+  .hero-image { flex: 0.8; perspective: 1000px; }
+  .hero-image img { width: 100%; max-width: 350px; border-radius: 8px; transform: rotateY(-15deg); box-shadow: -20px 20px 40px rgba(0,0,0,0.8), 0 0 30px var(--accent-glow); transition: transform 0.5s ease; }
+  .hero-image:hover img { transform: rotateY(0deg) scale(1.05); }
+
+  /* Sections General */
+  section { padding: 80px 0; border-top: 1px solid var(--card-border); }
+  .sec-title { text-align: center; font-size: 36px; margin-bottom: 48px; text-transform: uppercase; }
+  .sec-title span { color: var(--accent); }
+  
+  /* Grid Layouts */
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
+  .card { background: var(--card-bg); border: 1px solid var(--card-border); padding: 32px; border-radius: 12px; transition: transform 0.3s; }
+  .card:hover { transform: translateY(-5px); border-color: var(--accent); }
+  .card-icon { font-size: 32px; margin-bottom: 16px; }
+  .card h3 { font-size: 20px; margin-bottom: 12px; color: var(--star); }
+  .card p { color: var(--grey); font-size: 15px; }
+
+  /* Author */
+  .author { display: flex; gap: 48px; align-items: center; }
+  .author-text { flex: 1; }
+  .author-text h2 { font-size: 32px; margin-bottom: 24px; }
+  .author-text p { color: var(--grey); margin-bottom: 16px; }
+  
+  /* Upsell Bundle */
+  .bundle-upsell { background: rgba(30, 41, 59, 0.8); border: 2px solid var(--highlight-border); padding: 48px; border-radius: 16px; text-align: center; box-shadow: 0 0 40px var(--highlight-glow); position: relative; overflow: hidden; }
+  .bundle-badge { position: absolute; top: 0; left: 50%; transform: translateX(-50%); background: var(--highlight-border); color: #000; padding: 8px 24px; font-weight: 700; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
+  .bundle-items { text-align: left; max-width: 400px; margin: 32px auto; font-size: 16px; }
+  .bundle-items li { margin-bottom: 12px; display: flex; gap: 12px; align-items: center; }
+  .bundle-items li::before { content: "✓"; color: #10B981; font-weight: bold; }
+  
+  /* Reviews */
+  .review { border-left: 3px solid var(--accent); padding: 0 24px; margin-bottom: 32px; }
+  .stars-rating { color: var(--highlight-border); margin-bottom: 8px; }
+  .review p { font-size: 16px; font-style: italic; margin-bottom: 12px; }
+  .review-author { color: var(--grey); font-size: 14px; font-weight: 500; }
+
+  /* FAQ */
+  .faq-item { background: var(--card-bg); border: 1px solid var(--card-border); margin-bottom: 16px; border-radius: 8px; overflow: hidden; }
+  .faq-btn { width: 100%; text-align: left; padding: 24px; background: none; border: none; color: var(--star); font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; }
+  .faq-ans { padding: 0 24px 24px; color: var(--grey); display: none; }
+  .faq-item.open .faq-ans { display: block; }
+  .faq-item.open .faq-btn { color: var(--accent); }
+
+  /* Footer */
+  footer { background: #03040B; text-align: center; padding: 40px 24px; color: var(--grey); font-size: 14px; border-top: 1px solid var(--card-border); }
+  
+  /* Exit Popup */
+  .exit-overlay { position: fixed; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); z-index: 100; display: none; justify-content: center; align-items: center; }
+  .exit-popup { background: var(--bg); border: 2px solid var(--highlight-border); padding: 48px; border-radius: 12px; max-width: 500px; text-align: center; position: relative; box-shadow: 0 0 50px var(--highlight-glow); }
+  .exit-close { position: absolute; top: 16px; right: 24px; font-size: 32px; color: var(--grey); cursor: pointer; background: none; border: none; }
+  
+  @media (max-width: 768px) {
+    .hero { flex-direction: column; text-align: center; }
+    .hero-image img { transform: rotateY(0deg); }
+    .nav-left { display: none; }
+    .author { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="space-bg"><div class="stars"></div></div>
+
+<header>
+  <div class="nav">
+    <div class="nav-left">
+      <a href="index.html">← Back to Catalog</a>
+    </div>
+    <div class="brand">
+      <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6 4.6 2.4 7.4-6-4.6-6 4.6 2.4-7.4-6-4.6h7.6z"/></svg>
+      THE UNIVERSE OF ASTRONOMY
+    </div>
+    <div class="nav-right">
+      <a href="bundle.html" style="color:var(--highlight-border); font-size:13px; font-weight:600;">UPGRADE TO BUNDLE</a>
+    </div>
+  </div>
+</header>
+
+<div class="sticky-bar" id="stickyBar">
+  <span style="font-weight:700; font-family:'Space Grotesk';">The Universe Explained</span>
+  <span style="color:var(--grey);"><s>$34</s></span>
+  <span style="color:var(--accent); font-weight:700; font-size:20px;">$21</span>
+  <a href="#buy" class="btn-primary" style="padding: 10px 20px; font-size: 14px;">Get Access</a>
+</div>
+
+<main class="container">
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Launch Offer Active</div>
+      <h1>Understand The Cosmos Without The <span>Jargon</span></h1>
+      <p class="hero-sub">A clear, vivid tour of modern space science. Discover the structural rules of the universe, from the Big Bang to the mysteries physics still can't answer.</p>
+      
+      <div class="social-proof">
+        <div class="live-dot"></div>
+        <span><strong>142</strong> people are viewing this right now</span>
+      </div>
+      
+      <div class="offer-box" id="buy">
+        <div style="color:var(--grey); font-size:13px; text-transform:uppercase; letter-spacing:0.1em;">Special Offer Expires In:</div>
+        <div class="countdown">
+          <div><span id="hh">12</span><br><span style="font-size:12px;color:var(--grey)">HRS</span></div>:
+          <div><span id="mm">45</span><br><span style="font-size:12px;color:var(--grey)">MIN</span></div>:
+          <div><span id="ss">30</span><br><span style="font-size:12px;color:var(--grey)">SEC</span></div>
+        </div>
+        <div class="price-strike">$34.00</div>
+        <div class="price-main">$21.00</div>
+        <a href="#" class="btn-primary" style="width: 100%; margin-bottom:12px;">Get Instant Access</a>
+        <div style="font-size:12px; color:var(--grey);">🔒 Secure Checkout &mdash; 30-Day Money Back Guarantee</div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="cover1.png" alt="The Universe Explained">
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title">Why Most Science Books <span>Fail You</span></h2>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <h3>Too Academic</h3>
+        <p>They hit you with equations and deep physics terminology before explaining the core concepts in plain English.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🥱</div>
+        <h3>Boring & Dry</h3>
+        <p>The universe is the most exciting thing in existence, yet textbooks manage to make it feel like a chore.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧩</div>
+        <h3>Disconnected</h3>
+        <p>You learn facts, but you don't learn how they connect. You need a structural understanding of spacetime.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title">What You Will <span>Discover</span> Inside</h2>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon">🌌</div>
+        <h3>How Spacetime Works</h3>
+        <p>Relativity through thought experiments, not math. Understand why gravity bends time.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚛️</div>
+        <h3>The Quantum World</h3>
+        <p>Superposition and entanglement made intuitive. See why the very small behaves so strangely.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">👽</div>
+        <h3>Life Beyond Earth</h3>
+        <p>The Fermi paradox and an honest look at astrobiology. Are we truly alone in the dark?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bundle-upsell" id="upsell">
+    <div class="bundle-badge">🏆 BEST VALUE</div>
+    <h2 style="font-size:36px; margin-bottom:16px;">Want The Complete Cosmic Blueprint?</h2>
+    <p style="color:var(--grey); max-width:600px; margin:0 auto;">Most readers don't stop at just one book. The Complete System Bundle gives you all three of our premium guides for a fraction of the cost.</p>
+    
+    <ul class="bundle-items">
+      <li>The Universe Explained ($34 value)</li>
+      <li>Black Holes, Plainly ($19 value)</li>
+      <li>A Field Guide to the Night Sky ($29 value)</li>
+    </ul>
+    
+    <div style="font-size: 20px; color:var(--grey); margin-bottom:24px;">Total Value: <s>$82</s> <span style="font-family:'Space Grotesk'; font-size:36px; color:var(--highlight-border); margin-left:12px; font-weight:700;">$59</span></div>
+    
+    <a href="bundle.html" class="btn-primary btn-gold">Upgrade To The Bundle — $59</a>
+  </section>
+  
+  <section>
+    <div class="author">
+      <div class="author-text">
+        <div style="color:var(--accent); font-weight:700; letter-spacing:0.1em; margin-bottom:8px;">YOUR GUIDE</div>
+        <h2>Meet Adrian</h2>
+        <p>Adrian is a science communicator and the creator of The Universe Of Astronomy, where complex cosmology gets translated for everyone.</p>
+        <p>His philosophy is simple: real science, real clarity, no talking down and no dumbing down. He strips away the heavy math to reveal the elegant structures of the cosmos.</p>
+      </div>
+      <div style="flex: 0.5; text-align:center;">
+        <div style="font-size:64px;">👨‍🚀</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10B981; border-radius: 12px; padding: 48px; text-align: center; margin: 40px 0;">
+    <div style="font-size: 48px; margin-bottom: 16px;">🛡️</div>
+    <h2>30-Day Money Back Guarantee</h2>
+    <p style="color:var(--grey); max-width: 600px; margin: 16px auto 0;">Read the whole book. If it doesn't profoundly change how you see the night sky, email us within 30 days for a full refund. Zero risk.</p>
+  </section>
+
+  <section>
+    <h2 class="sec-title">Reader <span>Impact</span></h2>
+    <div class="review">
+      <div class="stars-rating">★★★★★</div>
+      <p>"I've tried reading Stephen Hawking, but I always get lost by chapter 3. This book finally made relativity click in my head. Adrian's thought experiments are genius."</p>
+      <div class="review-author">Sarah M. — Verified Reader</div>
+    </div>
+    <div class="review">
+      <div class="stars-rating">★★★★★</div>
+      <p>"The best $21 I've spent all year. It doesn't treat you like a child, but it doesn't assume you have a PhD either. Just perfect clarity."</p>
+      <div class="review-author">David T. — Verified Reader</div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title">Frequently Asked <span>Questions</span></h2>
+    <div class="faq-item">
+      <button class="faq-btn">Do I need a math background? <span>+</span></button>
+      <div class="faq-ans">Not at all. The entire book is written conceptually. We use thought experiments instead of equations to explain complex physics.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn">How do I access it? <span>+</span></button>
+      <div class="faq-ans">Instantly. After checkout, you get immediate digital access (PDF and EPUB) to read on any device.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn">Is there a physical copy? <span>+</span></button>
+      <div class="faq-ans">Currently, this is a digital-only release to ensure instant access and keep costs down.</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2026 The Universe Of Astronomy. All Rights Reserved.</p>
+</footer>
+
+<!-- Exit Popup -->
+<div class="exit-overlay" id="exitPopup">
+  <div class="exit-popup">
+    <button class="exit-close" id="closeExit">&times;</button>
+    <h2 style="margin-bottom:16px;">Wait — Don't Leave Empty Handed</h2>
+    <p style="color:var(--grey); margin-bottom:32px;">Get instant access to "The Universe Explained" right now for just <strong style="color:var(--accent)">$21</strong>. Start expanding your mind tonight.</p>
+    <a href="#buy" class="btn-primary" id="exitBuy">YES, I WANT THE BOOK</a>
+    <p style="margin-top:24px; font-size:14px;"><a href="#" id="declineExit" style="color:var(--grey); text-decoration:underline;">No thanks, I'll pass on this opportunity</a></p>
+  </div>
+</div>
+
+<script>
+  // Sticky Bar
+  window.addEventListener('scroll', () => {
+    const bar = document.getElementById('stickyBar');
+    if (window.scrollY > 400) { bar.classList.add('visible'); }
+    else { bar.classList.remove('visible'); }
+  });
+
+  // FAQ Accordion
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      item.classList.toggle('open');
+      btn.querySelector('span').textContent = item.classList.contains('open') ? '-' : '+';
+    });
+  });
+
+  // Countdown
+  let time = 12 * 3600 + 45 * 60 + 30; // 12:45:30
+  setInterval(() => {
+    time--;
+    document.getElementById('hh').innerText = String(Math.floor(time / 3600)).padStart(2, '0');
+    document.getElementById('mm').innerText = String(Math.floor((time % 3600) / 60)).padStart(2, '0');
+    document.getElementById('ss').innerText = String(time % 60).padStart(2, '0');
+  }, 1000);
+
+  // Exit Intent
+  let popupShown = false;
+  document.addEventListener('mouseleave', (e) => {
+    if (e.clientY < 0 && !popupShown) {
+      document.getElementById('exitPopup').style.display = 'flex';
+      popupShown = true;
+    }
+  });
+  document.getElementById('closeExit').onclick = () => document.getElementById('exitPopup').style.display = 'none';
+  document.getElementById('declineExit').onclick = (e) => { e.preventDefault(); document.getElementById('exitPopup').style.display = 'none'; };
+  document.getElementById('exitBuy').onclick = () => document.getElementById('exitPopup').style.display = 'none';
+</script>
+</body>
+</html>
