@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -175,7 +175,7 @@
   /* Product Grid */
   .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 32px;
     align-items: end; /* align bottoms so highlighted card pops up */
   }
@@ -334,7 +334,7 @@
     z-index: 10;
   }
 
-  @media (max-width: 960px) {
+  @media (max-width: 768px) {
     .product-grid { grid-template-columns: 1fr; }
     .card.highlight { transform: scale(1); margin: 20px 0; }
     .card.highlight:hover { transform: translateY(-5px); }
@@ -364,7 +364,7 @@
   <div class="nav">
     <div class="nav-left">
       <a href="#">Library / Catalog</a>
-      <a href="#bundle">The Bundle ($59)</a>
+      <a href="#bundle">The Bundle (€120)</a>
     </div>
     <div class="brand">
       <!-- Simple SVG Star icon -->
@@ -388,7 +388,7 @@
     <div class="card">
       <img src="cover1.png" alt="The Universe Explained Book Cover" class="card-cover">
       <h2>The Universe Explained</h2>
-      <div class="price">$21</div>
+      <div class="price">€27</div>
       <ul class="card-features">
         <li>A clear, jargon-free tour of modern space science.</li>
         <li>27 chapters from the Big Bang to the mysteries of cosmology.</li>
@@ -401,7 +401,7 @@
     <div class="card">
       <img src="cover2.png" alt="Black Holes Plainly Book Cover" class="card-cover">
       <h2>Black Holes, Plainly</h2>
-      <div class="price">$19</div>
+      <div class="price">€47</div>
       <ul class="card-features">
         <li>Event horizons, singularities, and spacetime curvature.</li>
         <li>Understand the strangest objects in the universe.</li>
@@ -416,11 +416,11 @@
       <div class="stars-rating">★★★★★</div>
       <img src="bundle.png" alt="The Complete Collection Bundle" class="card-cover">
       <h2>The Complete System Bundle</h2>
-      <div class="price">$59 <span class="price-strike">$82</span></div>
+      <div class="price">€120 <span class="price-strike">€163</span></div>
       <ul class="card-features">
-        <li>Includes <b>The Universe Explained</b> ($34 value).</li>
-        <li>Includes <b>Black Holes, Plainly</b> ($19 value).</li>
-        <li>BONUS: <b>A Field Guide to the Night Sky</b> ($29 value).</li>
+        <li>Includes <b>The Universe Explained</b> (€34 value).</li>
+        <li>Includes <b>Black Holes, Plainly</b> (€19 value).</li>
+        <li>BONUS: <b>A Field Guide to the Night Sky</b> (€89 value).</li>
         <li>Lifetime access and all future updates.</li>
       </ul>
       <a href="bundle.html" class="btn-outline" style="display:block; margin-top:24px; padding:12px; background:var(--highlight-border); color:#000; border-radius:4px; font-weight:700; text-transform:uppercase;">View Bundle Details</a>
@@ -431,11 +431,16 @@
 <div class="notification">
   <img src="bundle.png" alt="Bundle">
   <div class="notif-text">
-    <span class="name">Sarah M.</span> just purchased<br>
-    The Complete System Bundle ($59)
+    <span class="name" id="notifName">Sarah M.</span> just purchased<br>
+    The Complete System Bundle (€120)
     <div class="notif-time">Just now</div>
   </div>
 </div>
+
+<script>
+  const names = ["Sarah M.", "David T.", "James K.", "Emily R.", "Michael B.", "Jessica L.", "Robert C.", "Linda S.", "William W.", "Karen H.", "Alex J."];
+  document.getElementById('notifName').innerText = names[Math.floor(Math.random() * names.length)];
+</script>
 
 <footer>
   <p>&copy; 2026 The Universe Of Astronomy. Independent publisher. Not affiliated with any institution.</p>
